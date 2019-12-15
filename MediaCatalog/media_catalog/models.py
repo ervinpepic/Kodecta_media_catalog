@@ -6,8 +6,8 @@ class Creator(models.Model):
 	date_of_birth		= models.DateField(auto_now_add=False, auto_now=False)
 
 	class Meta:
-		verbose_name = "Category"
-		verbose_name_plural = "Categories"
+		verbose_name = "Creator"
+		verbose_name_plural = "Creators"
 
 	def __str__(self):
 		return self.name
@@ -24,7 +24,7 @@ class Provider(models.Model):
 		verbose_name_plural = "Providers"
 
 	def __str__(self):
-		return self.provider_name
+		return self.name
 
 
 class Category(models.Model):
@@ -37,7 +37,7 @@ class Category(models.Model):
 		verbose_name_plural = "Categories"
 
 	def __str__(self):
-		return self.category_name
+		return self.name
 
 class Media(models.Model):
 	title 					= models.CharField(max_length=120)
