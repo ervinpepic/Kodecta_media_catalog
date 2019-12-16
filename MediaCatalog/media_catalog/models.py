@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Creator(models.Model):
@@ -54,6 +55,9 @@ class Media(models.Model):
 
 	def __str__(self):
 		return self.title
+
+	def get_absolute_url(self):
+		return reverse("api:media-detail", kwargs={"title": self.title})
 
 
     

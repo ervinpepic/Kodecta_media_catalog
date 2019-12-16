@@ -17,8 +17,13 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls import url
 
+from media_catalog import urls
+
+# router.register(r'media-', views.MediaDetail)
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     # url(r'^api-auth/', include('rest_framework.urls')),
+    path('', include('media_catalog.urls', namespace='api')),
     
 ]
