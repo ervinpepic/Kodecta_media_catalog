@@ -59,6 +59,7 @@ class Media(models.Model):
 
 	def get_absolute_url(self):
 		return reverse("api:media-detail", kwargs={"title": self.title})
+	
 
 
     

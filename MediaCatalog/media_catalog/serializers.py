@@ -1,10 +1,10 @@
 from rest_framework import serializers
+from rest_framework.serializers import HyperlinkedRelatedField
 
 from . models import Media, Category, Creator, Provider
 
 
 class MediaSerializer(serializers.ModelSerializer):
-	
 	class Meta:
 		model = Media
 		fields = [
