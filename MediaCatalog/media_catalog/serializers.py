@@ -1,13 +1,17 @@
 from rest_framework import serializers
-from rest_framework.serializers import HyperlinkedRelatedField
+from rest_framework.serializers import StringRelatedField
 
 from . models import Media, Category, Creator, Provider
 
 
-class MediaSerializer(serializers.ModelSerializer):
+class MediaSerializer(serializers.HyperlinkedModelSerializer):
+	genre = serializers.StringRelatedField(many=True, read_only=True)
+	publisher = serializers.StringRelatedField(many=True, read_only=True)
+	artist = serializers.StringRelatedField(many=True, read_only=True)
 	class Meta:
 		model = Media
 		fields = [
+			'url',
 			'id', 
 			'title', 
 			'artist', 
@@ -18,23 +22,23 @@ class MediaSerializer(serializers.ModelSerializer):
 			'date_published']
 
 
-class CategorySerializer(serializers.ModelSerializer):
+class CategorySerializer(serializers.HyperlinkedModelSerializer):
 	
 	class Meta:
 		model = Category
-		fields = ['name', 'description']
+		fields = ['id', 'name', 'description']
 
-class CreatorSerializer(serializers.ModelSerializer):
+class CreatorSerializer(serializers.HyperlinkedModelSerializer):
     
     class Meta:
     	model = Creator
-    	fields = ['name', 'date_of_birth']
+    	fields = ['id', 'name', 'date_of_birth']
 
-class ProviderSerializer(serializers.ModelSerializer):
+class ProviderSerializer(serializers.HyperlinkedModelSerializer):
     
     class Meta:
     	model = Provider
-    	fields = ['name', 'provider_rank']
+    	fields = ['id', 'name', 'provider_rank']
     
 
 
