@@ -25,10 +25,10 @@ class CategoryViewSet(viewsets.ModelViewSet):
 	filterset_fields = ['name', 'description']
 
 class CreatorViewSet(viewsets.ModelViewSet):
-	queryset = Category.objects.all()
+	queryset = Creator.objects.all()
 	serializer_class = CreatorSerializer
 	filter_backends = [DjangoFilterBackend]
-	filterset_fields = ['name', 'description']
+	filterset_fields = ['name', 'date_of_birth']
 
 class ProviderViewSet(viewsets.ModelViewSet):
 	queryset = Provider.objects.all()
