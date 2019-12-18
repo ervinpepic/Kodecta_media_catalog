@@ -2,6 +2,9 @@ from django.db import models
 
 from django.urls import reverse
 
+from django.utils.dateparse import parse_datetime
+from datetime import datetime
+
 
 class Creator(models.Model):
 	name 				= models.CharField(max_length=50)
@@ -59,6 +62,30 @@ class Media(models.Model):
 
 	def get_absolute_url(self):
 		return reverse("api:media-detail", kwargs={"title": self.title})
+
+class User(models.Model):
+	name = models.CharField(max_length=55)
+
+	class Meta:
+		verbose_name = "User"
+		verbose_name_plural = "Users"
+
+	def __str__(self):
+		return self.name
+
+class MediaPublish(models.Model):
+	user 		= models.ForeignKey(User, on_delete=models.CASCADE)
+	media 		= models.ForeignKey(Media, on_delete=models.CASCADE)
+	date_expiry = models.DateTimeField('Date of expiry for media')
+
+	class Meta:
+		verbose_name = 'Media Publish'
+		verbose_name_plural = 'Media Publishes'
+
+	def __str__(self):
+		
+		return  f"Assigned to:  {self.user}. - {self.media} -. Vaild through:-> {self.date_expiry}"
+
 	
 
 

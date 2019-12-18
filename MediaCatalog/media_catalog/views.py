@@ -4,12 +4,14 @@ from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
 
 
-from . models import Media, Category, Provider, Creator
+from . models import Media, MediaPublish, Category, Provider, Creator, User
 from . serializers import (
-						MediaSerializer, 
+						MediaSerializer,
+						MediaPublishSerializer, 
 						CategorySerializer, 
 						CreatorSerializer, 
-						ProviderSerializer)
+						ProviderSerializer,
+						UserSerializer)
 
 
 class MediaViewSet(viewsets.ModelViewSet):
@@ -35,4 +37,16 @@ class ProviderViewSet(viewsets.ModelViewSet):
 	serializer_class = ProviderSerializer
 	filter_backends = [DjangoFilterBackend]
 	filterset_fields = ['name', 'provider_rank']
+
+class UserViewSet(viewsets.ModelViewSet):
+	queryset = User.objects.all()
+	serializer_class = UserSerializer
+	filter_backends = [DjangoFilterBackend]
+	filterset_fields = ['name']
+
+class MediaPublishViewSet(viewsets.ModelViewSet):
+	queryset = MediaPublish.objects.all()
+	serializer_class = MediaPublishSerializer
+	filter_backends = [DjangoFilterBackend]
+	filterset_fields = ['user', 'media']
 
