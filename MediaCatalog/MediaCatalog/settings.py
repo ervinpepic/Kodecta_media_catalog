@@ -114,7 +114,7 @@ LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
 
-DATETIME_FORMAT = '%d %b %Y', '%d %b, %Y'
+DATETIME_FORMAT = '%d/%b/%Y', '%d %b, %Y'
 
 USE_I18N = False
 

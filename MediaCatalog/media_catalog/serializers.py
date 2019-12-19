@@ -21,7 +21,6 @@ class MediaSerializer(serializers.HyperlinkedModelSerializer):
 			'publishing_date', 
 			'date_published']
 
-
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
 	
 	class Meta:
@@ -40,7 +39,6 @@ class ProviderSerializer(serializers.HyperlinkedModelSerializer):
     	model = Provider
     	fields = ['id', 'name', 'provider_rank']
     
-
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     
     class Meta:

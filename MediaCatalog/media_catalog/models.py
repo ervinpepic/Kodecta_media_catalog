@@ -1,10 +1,5 @@
 from django.db import models
 
-from django.urls import reverse
-
-from django.utils.dateparse import parse_datetime
-from datetime import datetime
-
 
 class Creator(models.Model):
 	name 				= models.CharField(max_length=50)
@@ -17,12 +12,9 @@ class Creator(models.Model):
 	def __str__(self):
 		return self.name
 
-
-
 class Provider(models.Model):
 	name			= models.CharField(max_length=30)
 	provider_rank 	= models.IntegerField(default=0)
-
 
 	class Meta:
 		verbose_name = "Provider"
@@ -31,11 +23,9 @@ class Provider(models.Model):
 	def __str__(self):
 		return self.name
 
-
 class Category(models.Model):
 	name		= models.CharField(max_length=25)
 	description	= models.TextField()
-
 
 	class Meta:
 		verbose_name = "Category"
@@ -82,9 +72,9 @@ class MediaPublish(models.Model):
 		verbose_name = 'Media Publish'
 		verbose_name_plural = 'Media Publishes'
 
-	def __str__(self):
-		
+	def __str__(self):		
 		return  f"Assigned to:  {self.user}. - {self.media} -. Vaild through:-> {self.date_expiry}"
+		
 
 	
 

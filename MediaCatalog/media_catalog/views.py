@@ -1,8 +1,7 @@
-from django.shortcuts import render
+from django.utils import timezone
 
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
-
 
 from . models import Media, MediaPublish, Category, Provider, Creator, User
 from . serializers import (
@@ -45,8 +44,19 @@ class UserViewSet(viewsets.ModelViewSet):
 	filterset_fields = ['name']
 
 class MediaPublishViewSet(viewsets.ModelViewSet):
-	queryset = MediaPublish.objects.all()
 	serializer_class = MediaPublishSerializer
 	filter_backends = [DjangoFilterBackend]
 	filterset_fields = ['user', 'media']
+
+	def get_queryset(self, *args, **kwargs):
+		qs = MediaPublish.objects.filter(date_expiry__lt=timezone.now())
+		return qs
+			
+		
+
+
+
+
+
+
 
