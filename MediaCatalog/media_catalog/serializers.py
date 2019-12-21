@@ -1,8 +1,9 @@
 from rest_framework import serializers
 from rest_framework.serializers import StringRelatedField
+from drf_haystack.serializers import HaystackSerializer
 
 from . models import Media, MediaPublish, Category, Creator, Provider, User
-
+from . search_indexes import MediaIndex
 
 class MediaSerializer(serializers.HyperlinkedModelSerializer):
 	genre = serializers.StringRelatedField(many=True, read_only=True)
@@ -52,6 +53,11 @@ class MediaPublishSerializer(serializers.HyperlinkedModelSerializer):
 	class Meta:
 		model = MediaPublish
 		fields = ['id', 'user', 'media', 'date_expiry']
+
+class MediaSearchSerializer(HaystackSerializer):
+	class Meta:
+		index_classes = [MediaIndex]
+		fields = ['text', 'country_published', 'date']
 		
 
 
