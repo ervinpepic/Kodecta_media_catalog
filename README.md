@@ -1,11 +1,10 @@
 # Kodecta_media_catalog
 Project task for Kodecta d.o.o
 
-# Dillinger
+# Django and Django-Rest
 
-[![N|Solid](https://cldup.com/dTxpPi9lDf.thumb.png)](https://nodesource.com/products/nsolid)
+[![Rest](https://i.udemycdn.com/course/750x422/1846104_a126.jpg)](https://www.django-rest-framework.org/)
 
-[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
 Media Catalog REST API is application for project task for  **Kodecta d.o.o**. 
 To install this application you have to install:
