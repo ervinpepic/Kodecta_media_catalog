@@ -53,18 +53,18 @@ class Media(models.Model):
 	def get_absolute_url(self):
 		return reverse("api:media-detail", kwargs={"title": self.title})
 
-class User(models.Model):
+class MediaUser(models.Model):
 	name = models.CharField(max_length=55)
 
 	class Meta:
-		verbose_name = "User"
-		verbose_name_plural = "Users"
+		verbose_name = "Media User"
+		verbose_name_plural = "Meida Users"
 
 	def __str__(self):
 		return self.name
 
 class MediaPublish(models.Model):
-	user 		= models.ForeignKey(User, on_delete=models.CASCADE)
+	user 		= models.ForeignKey(MediaUser, on_delete=models.CASCADE)
 	media 		= models.ForeignKey(Media, on_delete=models.CASCADE)
 	date_expiry = models.DateTimeField('Date of expiry for media')
 

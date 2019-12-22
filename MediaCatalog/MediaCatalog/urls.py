@@ -19,6 +19,11 @@ from media_catalog import urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('media_catalog.urls')),
+	path('', include('media_catalog.urls')),
+
     
 ]
+
+
+
+

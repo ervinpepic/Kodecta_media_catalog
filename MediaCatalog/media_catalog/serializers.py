@@ -1,9 +1,13 @@
+from django.contrib.auth.models import User, Group
+
 from rest_framework import serializers
 from rest_framework.serializers import StringRelatedField
+
 from drf_haystack.serializers import HaystackSerializer
 
-from . models import Media, MediaPublish, Category, Creator, Provider, User
+from . models import Media, MediaPublish, Category, Creator, Provider, MediaUser
 from . search_indexes import MediaIndex
+
 
 class MediaSerializer(serializers.HyperlinkedModelSerializer):
 	genre = serializers.StringRelatedField(many=True, read_only=True)
@@ -40,10 +44,10 @@ class ProviderSerializer(serializers.HyperlinkedModelSerializer):
     	model = Provider
     	fields = ['id', 'name', 'provider_rank']
     
-class UserSerializer(serializers.HyperlinkedModelSerializer):
+class MediaUserSerializer(serializers.HyperlinkedModelSerializer):
     
     class Meta:
-    	model = User
+    	model = MediaUser
     	fields = ['id', 'name']
 
 class MediaPublishSerializer(serializers.HyperlinkedModelSerializer):
@@ -58,7 +62,16 @@ class MediaSearchSerializer(HaystackSerializer):
 	class Meta:
 		index_classes = [MediaIndex]
 		fields = ['text', 'country_published', 'date']
-		
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = User
+        fields = ('username', 'email', "first_name", "last_name")
+
+class GroupSerializer(serializers.HyperlinkedModelSerializer):
+    class Meta:
+        model = Group
+        fields = ("name", )
 
 
 
