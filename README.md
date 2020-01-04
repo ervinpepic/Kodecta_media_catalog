@@ -28,7 +28,18 @@ Then you can setup yout database for your environment using:
 $ python manage.py createsuperuser
 ```
 
-After that use:
+After that to import database use bellow command if you use .bak format :
+```
+pg_restore -Fc -C media_catalog.bak 
+```
+or if you use .tar format :
+```
+pg_restore -Ft -C media_catalog.tar
+```
+
+After that you will have my example and my database.
+
+If you want new database you must use:
  ```sh
 $ ./manage.py migrate
 ```
