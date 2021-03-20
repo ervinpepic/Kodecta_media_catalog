@@ -33,7 +33,7 @@ exotel==0.1.5
 future==0.18.2
 idna==2.8
 itypes==1.1.0
-Jinja2==2.10.3
+Jinja2==2.11.3
 jira==1.0.14
 jmespath==0.9.4
 jsonschema==2.6.0
