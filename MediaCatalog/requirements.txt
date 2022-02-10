@@ -12,7 +12,7 @@ coreapi==2.3.3
 coreschema==0.0.4
 croniter==0.3.30
 defusedxml==0.6.0
-Django==2.2.9
+Django==2.2.27
 django-elasticsearch-dsl-drf==0.20.3
 django-filter==2.2.0
 django-guardian==2.1.0
